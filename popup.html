@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="icons/icon48.png" alt="Logo" class="logo">
+      <h1>Amazon Job Auto-Applier</h1>
+    </div>
+    
+    <div class="status-section">
+      <div class="status-indicator">
+        <div id="statusDot" class="status-dot stopped"></div>
+        <span id="statusText">Stopped</span>
+      </div>
+      
+      <div class="controls">
+        <button id="toggleBtn" class="btn btn-start">Start Monitoring</button>
+        <button id="settingsBtn" class="btn btn-secondary">Settings</button>
+      </div>
+      
+      <button id="resetBtn" class="btn btn-reset" style="display: none; margin-top: 10px; width: 100%;">Reset Automation</button>
+    </div>
+    
+    <div class="stats-section">
+      <div class="stat-item">
+        <span class="stat-label">Current Step:</span>
+        <span id="currentStep" class="stat-value">Idle</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Target City:</span>
+        <span id="targetCityDisplay" class="stat-value">Toronto</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Applications:</span>
+        <span id="applicationCount" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Last Check:</span>
+        <span id="lastCheck" class="stat-value">Never</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Status:</span>
+        <span id="detailedStatus" class="stat-value">Ready to start</span>
+      </div>
+    </div>
+    
+    <div class="quick-settings">
+      <h3>Quick Settings</h3>
+      
+      <div class="setting-group">
+        <label for="targetCity">Target City:</label>
+        <input type="text" id="targetCity" value="Toronto" placeholder="e.g., Toronto, Vancouver">
+      </div>
+      
+      <div class="setting-group">
+        <label for="autoStart">Auto-start monitoring:</label>
+        <input type="checkbox" id="autoStart">
+      </div>
+      
+      <div class="setting-group">
+        <label for="interval">Check interval (seconds):</label>
+        <select id="interval">
+          <option value="5000" selected>5</option>
+          <option value="10000">10</option>
+          <option value="15000">15</option>
+          <option value="30000">30</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="workflow-section">
+      <h3>Workflow Steps</h3>
+      <div class="workflow-steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <span class="step-text">Refresh & scan jobs</span>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <span class="step-text">Click matching job</span>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <span class="step-text">Select work shift</span>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span>
+          <span class="step-text">Continue application</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="logs-section">
+      <div class="logs-header">
+        <h3>Activity Log</h3>
+        <button id="clearLogs" class="btn-small">Clear</button>
+      </div>
+      <div id="logsList" class="logs-list">
+        <div class="log-item">No activity yet...</div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <button id="openOptions" class="btn btn-link">Advanced Settings</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

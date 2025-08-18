@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Amazon Job Auto-Applier - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="icons/icon48.png" alt="Logo" class="logo">
+      <h1>Amazon Job Auto-Applier Settings</h1>
+      <p>Configure your preferences for automatic job applications</p>
+    </div>
+    
+    <div class="settings-grid">
+      <!-- General Settings -->
+      <div class="settings-section">
+        <h2>General Settings</h2>
+        
+        <div class="setting-item">
+          <label for="autoStart">
+            <input type="checkbox" id="autoStart">
+            Auto-start monitoring when page loads
+          </label>
+          <p class="setting-description">Automatically begin monitoring for jobs when you visit the Amazon hiring page</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="monitoringInterval">Monitoring Interval (seconds):</label>
+          <select id="monitoringInterval">
+            <option value="5000">5 seconds</option>
+            <option value="10000">10 seconds (recommended)</option>
+            <option value="15000">15 seconds</option>
+            <option value="30000">30 seconds</option>
+            <option value="60000">1 minute</option>
+          </select>
+          <p class="setting-description">How often to check for new job postings</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="autoApply">
+            <input type="checkbox" id="autoApply" checked>
+            Automatically apply to matching jobs
+          </label>
+          <p class="setting-description">When disabled, will only notify about new jobs without applying</p>
+        </div>
+      </div>
+      
+      <!-- Shift Preferences -->
+      <div class="settings-section">
+        <h2>Shift Preferences</h2>
+        
+        <div class="setting-item">
+          <label for="shiftTypes">Preferred Shift Types:</label>
+          <div class="checkbox-group" id="shiftTypes">
+            <label><input type="checkbox" value="day"> Day Shift</label>
+            <label><input type="checkbox" value="night"> Night Shift</label>
+            <label><input type="checkbox" value="evening"> Evening Shift</label>
+            <label><input type="checkbox" value="morning"> Morning Shift</label>
+            <label><input type="checkbox" value="weekend"> Weekend Shift</label>
+            <label><input type="checkbox" value="weekday"> Weekday Shift</label>
+          </div>
+          <p class="setting-description">Select which shift types you want to apply for (leave empty for all)</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="customShifts">Custom Shift Keywords:</label>
+          <textarea id="customShifts" placeholder="Enter keywords separated by commas (e.g., part-time, full-time, warehouse associate)"></textarea>
+          <p class="setting-description">Additional keywords to look for in job postings</p>
+        </div>
+      </div>
+      
+      <!-- Location Preferences -->
+      <div class="settings-section">
+        <h2>Location Preferences</h2>
+        
+        <div class="setting-item">
+          <label for="preferredLocations">Preferred Locations:</label>
+          <textarea id="preferredLocations" placeholder="Enter locations separated by commas (e.g., Toronto, Mississauga, Vancouver)"></textarea>
+          <p class="setting-description">Locations you want to work at (leave empty for all locations)</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="excludeLocations">Exclude Locations:</label>
+          <textarea id="excludeLocations" placeholder="Enter locations to avoid separated by commas"></textarea>
+          <p class="setting-description">Locations you want to avoid</p>
+        </div>
+      </div>
+      
+      <!-- Application Settings -->
+      <div class="settings-section">
+        <h2>Application Settings</h2>
+        
+        <div class="setting-item">
+          <label for="maxApplications">Maximum applications per day:</label>
+          <input type="number" id="maxApplications" min="1" max="50" value="10">
+          <p class="setting-description">Limit the number of applications to prevent overwhelming</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="applicationDelay">Delay between applications (seconds):</label>
+          <input type="number" id="applicationDelay" min="30" max="600" value="60">
+          <p class="setting-description">Wait time between consecutive applications</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="preferredStartDate">Preferred Start Date:</label>
+          <select id="preferredStartDate">
+            <option value="asap">As soon as possible</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="next_week">Next week</option>
+            <option value="custom">Custom date</option>
+          </select>
+          <input type="date" id="customStartDate" style="display: none; margin-top: 10px;">
+          <p class="setting-description">Your preferred start date for new positions</p>
+        </div>
+      </div>
+      
+      <!-- Notifications -->
+      <div class="settings-section">
+        <h2>Notifications</h2>
+        
+        <div class="setting-item">
+          <label for="enableNotifications">
+            <input type="checkbox" id="enableNotifications" checked>
+            Enable browser notifications
+          </label>
+          <p class="setting-description">Show notifications when jobs are found and applications are submitted</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="soundNotifications">
+            <input type="checkbox" id="soundNotifications">
+            Play sound for notifications
+          </label>
+          <p class="setting-description">Play an alert sound when important events occur</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="emailNotifications">Email notifications (optional):</label>
+          <input type="email" id="emailNotifications" placeholder="your-email@example.com">
+          <p class="setting-description">Receive email updates about applications (requires additional setup)</p>
+        </div>
+      </div>
+      
+      <!-- Advanced Settings -->
+      <div class="settings-section">
+        <h2>Advanced Settings</h2>
+        
+        <div class="setting-item">
+          <label for="debugMode">
+            <input type="checkbox" id="debugMode">
+            Enable debug mode
+          </label>
+          <p class="setting-description">Show additional logging information for troubleshooting</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="pageTimeout">Page load timeout (seconds):</label>
+          <input type="number" id="pageTimeout" min="5" max="60" value="15">
+          <p class="setting-description">How long to wait for page elements to load</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="retryAttempts">Retry attempts for failed actions:</label>
+          <input type="number" id="retryAttempts" min="1" max="5" value="3">
+          <p class="setting-description">Number of times to retry if an action fails</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+      <button id="resetBtn" class="btn btn-secondary">Reset to Defaults</button>
+      <button id="exportBtn" class="btn btn-secondary">Export Settings</button>
+      <button id="importBtn" class="btn btn-secondary">Import Settings</button>
+      <input type="file" id="importFile" accept=".json" style="display: none;">
+    </div>
+    
+    <div class="status-message" id="statusMessage"></div>
+    
+    <div class="help-section">
+      <h2>Help & Tips</h2>
+      <div class="help-content">
+        <h3>Getting Started:</h3>
+        <ol>
+          <li>Navigate to the Amazon hiring page (hiring.amazon.ca/app#/jobSearch)</li>
+          <li>Click the extension icon and press "Start Monitoring"</li>
+          <li>The extension will automatically check for new jobs and apply based on your preferences</li>
+        </ol>
+        
+        <h3>Tips for Best Results:</h3>
+        <ul>
+          <li>Keep the Amazon hiring tab open while monitoring</li>
+          <li>Set realistic preferences to avoid missing opportunities</li>
+          <li>Check the activity log regularly to see what's happening</li>
+          <li>Use a reasonable monitoring interval (10 seconds is recommended)</li>
+        </ul>
+        
+        <h3>Troubleshooting:</h3>
+        <ul>
+          <li>If applications aren't working, try refreshing the Amazon page</li>
+          <li>Enable debug mode for more detailed logging</li>
+          <li>Make sure you're logged into your Amazon account</li>
+          <li>Check that browser notifications are enabled</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Warehouse Job Auto-Applier",
+  "version": "1.1.0",
+  "description": "Automatically monitors and applies for available warehouse shifts on Amazon hiring portal with a simple 4-step workflow",
+  
+  "permissions": [
+    "storage",
+    "notifications",
+    "activeTab",
+    "background",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "https://hiring.amazon.ca/*",
+    "https://hiring.amazon.com/*",
+    "https://*.amazon.ca/*",
+    "https://*.amazon.com/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://hiring.amazon.ca/*",
+        "https://hiring.amazon.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Amazon Job Auto-Applier - 4-Step Workflow",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  
+  "options_page": "options.html",
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["content.js"],
+      "matches": [
+        "https://hiring.amazon.ca/*",
+        "https://hiring.amazon.com/*"
+      ]
+    }
+  ]
+}
